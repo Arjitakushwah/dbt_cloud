@@ -1,0 +1,12 @@
+with nation_info as (
+select 
+    n.nation_id as nation_id, 
+    n.name as nation_name,
+    r.region_id as region_id,
+    r.name as region_name,
+    n.comment nation_comment,
+    r.comment as region_comment 
+from {{ref('stg_nations')}} n
+join {{ref('stg_region')}} r on n.region_id=r.region_id
+)
+select * from nation_info
