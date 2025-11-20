@@ -1,5 +1,5 @@
 {{config(
-    tags = 'sample',)}}
+    tags = 'sample')}}
     {#pre_hook = 'use warehouse test_wh',#}
     {# post_hook = 'select * from analytics.dbt_akushwaha.stg_region' #}
 
