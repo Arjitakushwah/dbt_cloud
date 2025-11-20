@@ -38,8 +38,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   Analytics_IBM:
         materialized: table
+    
 
 vars:
   v_id: '_11'
+
+
+    
 
     

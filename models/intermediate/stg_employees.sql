@@ -4,7 +4,7 @@ with source as(
 changed as (
 -- 2. Select and rename columns (snake_case is the dbt standard)
 SELECT
-    key.nextval AS employee_key,
+    analytics.dbt_arjita.key.nextval AS employee_key,
     EMPLOYEE_ID AS employee_id,
     {{ jodo('employee_first_name', 'employee_last_name' ) }} as employee_name,
     EMPLOYEE_ADDRESS AS employee_address,
