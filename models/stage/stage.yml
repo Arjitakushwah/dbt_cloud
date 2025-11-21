@@ -101,7 +101,7 @@ models:
   - name: stg_lineitems
     description: "Staging table for line items information"
     columns:
-      - name: order_line_id
+      - name: order_id
         description: "Unique identifier for each line item"
         tests:
           - unique
