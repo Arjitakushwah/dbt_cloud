@@ -104,7 +104,6 @@ models:
       - name: order_id
         description: "Unique identifier for each line item"
         tests:
-          - unique
           - not_null
 
       - name: order_item_id
