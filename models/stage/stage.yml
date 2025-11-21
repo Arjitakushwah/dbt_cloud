@@ -3,48 +3,75 @@ models:
     description: "Staging table for regions information"
     columns:
       - name: region_id
-        description: '{{ doc("primary_key" )}}'     
-        tests: 
+        description: '{{ doc("primary_key" )}}'
+        tests:
           - unique
           - not_null
-          
+
       - name: name
-        data_tests:
+        tests:
           - unique
           - not_null
           - accepted_values:
               arguments:
-                values: ['AFRICA', 'AMERICA', 'ASIA']
-                
+                values:
+                  [
+                    "AFRICA",
+                    "AMERICA",
+                    "ASIA",
+                    "EUROPE",
+                    "MIDDLE EAST",
+                    "SOUTH EAST",
+                    "WEST",
+                  ]
+
                 config:
                   store_failures: true
                   schema: error
 
-
-
   - name: stg_nations
+    config:
+      group: sales
+      contract:
+        enforced: true
+
     columns:
       - name: nation_id
-        # ... other tests ...
+        data_type: int
+        constraints:
+          - type: not_null
+
+      - name: name
+        data_type: string
+        constraints:
+          - type: not_null
+
+      - name: updated_at
+        data_type: timestamp
         
-      - name: region_id 
-        tests:  
+
+
+      - name: region_id
+        data_type: int
+        tests:
           - relationships:
-              arguments: 
+              arguments:
                 to: ref('stg_region')
                 field: region_id
-              config:
-                store_failures: true
+
 
   - name: stg_customers
+    config:
+      group: sales
+      pre_hook: "alter session set query_tag = 'hooks' "
     columns:
       - name: customer_id
         tests:
           - unique
           - not_null
-          
+
       - name: nation_id
-        description: '{{ doc("foreign_key" )}}' 
+        description: '{{ doc("foreign_key" )}}'
         tests:
           - relationships:
               arguments:
@@ -54,12 +81,12 @@ models:
   - name: stg_orders
     columns:
       - name: order_id
-        data_tests:
+        tests:
           - unique
           - not_null
-          
+
       - name: customer_id
-        data_tests:
+        tests:
           - relationships:
               arguments:
                 to: ref('stg_customers')
@@ -79,7 +106,7 @@ models:
         tests:
           - unique
           - not_null
-          
+
       - name: order_item_id
         description: "surrogate key for line item"
 
@@ -87,5 +114,3 @@ seeds:
   - name: suppliers
     config:
       +alias: suppliers_name
-
-        
