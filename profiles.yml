@@ -1,0 +1,27 @@
+mk_mall:
+  outputs:
+    dev:
+      account: LGDQXOD-OHB80576
+      database: analytics
+      password: Sachin$123
+      role: analyticsengineer
+      schema: dbt_arjita
+      threads: 3
+      type: snowflake
+      user: sachin
+      warehouse: transform_wh
+  target: dev
+
+Analytics_IBM:
+  outputs:
+    dev:
+      account: LGDQXOD-OHB80576
+      database: analytics
+      password: Sachin$123
+      role: analyticsengineer
+      schema: dbt_akushwaha
+      threads: 3
+      type: snowflake
+      user: sachin
+      warehouse: transform_wh
+  target: dev
