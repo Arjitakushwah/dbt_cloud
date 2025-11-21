@@ -5,6 +5,28 @@ sources:
     tables:
       - name: customers
       - name: nations
+        columns:
+        - name: nation_id
+          data_type: int
+          constraints:
+          - type: not_null
+          - type: unique   
+
+        - name: name
+          data_type: string
+          constraints:
+            - type: not_null
+
+        - name: updated_at
+          data_type: timestamp
+        
+        - name: region_id
+          data_type: int
+          tests:
+            - relationships:
+                arguments:
+                  to: ref('stg_region')
+                  field: region_id
       - name: regions
       - name: v_nations
       - name: lineitems
