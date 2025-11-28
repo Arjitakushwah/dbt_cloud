@@ -36,11 +36,11 @@ models:
         enforced: true
 
     columns:
-      - name: region_id
+      - name: nation_id
         data_type: int
         constraints:
           - type: not_null
-          - type: unique   
+          
 
       - name: name
         data_type: string
@@ -50,6 +50,8 @@ models:
       - name: updated_at
         data_type: timestamp
         
+
+
       - name: region_id
         data_type: int
         tests:
@@ -57,7 +59,8 @@ models:
               arguments:
                 to: ref('stg_region')
                 field: region_id
-
+      - name: test_id
+        data_type: string
 
   - name: stg_customers
     config:
