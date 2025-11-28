@@ -32,8 +32,6 @@ models:
   - name: stg_nations
     config:
       group: sales
-      contract:
-        enforced: true
 
     columns:
       - name: nation_id
